@@ -12,7 +12,11 @@
   <param name="trajectory_execution/allowed_goal_duration_margin" value="0.5"/> <!-- default 0.5 -->
 
   <!-- Load the robot specific controller manager; this sets the moveit_controller_manager ROS parameter -->
+  <!-- Also pass through sim parameter towards controllers.yaml -->
+  <arg name="sim" default="false" />
   <arg name="moveit_controller_manager" default="ur5_e" />
-  <include file="$(find ur5_e_moveit_config)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml" />
+  <include file="$(find ur5_e_moveit_config)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml">
+    <arg name="sim" value="$(arg sim)" />
+  </include>
 
 </launch>

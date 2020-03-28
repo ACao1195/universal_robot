@@ -1,6 +1,6 @@
 controller_list:
-#  - name: "" # If on simulated arm (or actual arm) - is follow_joint_trajectory
-  - name: "scaled_pos_traj_controller"  # If on actual arm
+  - name: "" # If on simulated arm - is actually follow_joint_trajectory
+#  - name: "scaled_pos_traj_controller"  # If on actual arm
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     joints:

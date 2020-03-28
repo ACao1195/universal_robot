@@ -1,5 +1,12 @@
 <launch>
-  <rosparam file="$(find ur5_e_moveit_config)/config/controllers.yaml"/>
+  <arg name="sim" default="false" />
+
+  <!-- Load default controller pack if sim=false -->
+  <rosparam file="$(find ur5_e_moveit_config)/config/controllers.yaml" unless="$(arg sim)"/>
+
+  <!-- Otherwise, if sim=true, load simulated controller setup -->
+  <rosparam file="$(find ur5_e_moveit_config)/config/controllers_sim.yaml" if="$(arg sim)"/>
+
   <param name="use_controller_manager" value="false"/>
   <param name="trajectory_execution/execution_duration_monitoring" value="false"/>
   <param name="moveit_controller_manager" value="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
